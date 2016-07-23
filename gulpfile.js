@@ -12,7 +12,7 @@ elixir(function(mix) {
       'css/app.css'
     ]);
 
-    mix.browserSync({
-      proxy: 'twitter.dev'
-    });
+    // mix.browserSync({
+    //   proxy: 'twitter.dev'
+    // });
 });

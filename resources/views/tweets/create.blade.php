@@ -7,32 +7,21 @@
 
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
     </head>
-    <body>
-        <div class="container">
+    <body ng-app='tweet'>
+
+        <div class="container" ng-controller="CreateController as vm">
             <div class="content">
 
-
-                <!-- @if (count($errors) > 0) -->
-                <!-- <div class='alert alert-danger'> -->
-                <!--     <ul> -->
-                <!--     @foreach ($errors->all() as $error) -->
-                <!--         <li>{{ $error }}</li> -->
-                <!--     @endforeach -->
-                <!--     </ul> -->
-                <!-- </div> -->
-                <!-- @endif -->
-
-                <div id='errors' class='alert alert-danger' style='display:none'>
-                    <ul>
-                    </ul>
-                </div>
-
-                <form id='form' action='/tweets/store' method='POST' class='form'>
+                <form>
                     {{ csrf_field() }}
 
-                    <input name='body' class='' />
+                    <div class='form-group'>
+                        <label>Cuerpo del tweet: </label>
+                        <input name='body' ng-model='vm.data.body' class='form-control' />
+                        <span ng-if='vm.errors.body' class='has-error'> Ingresa body</span>
+                    </div>
 
-                    <button class='btn btn-primary'> Crea Tweet </button>
+                    <button ng-click='vm.submitForm()' class='btn btn-primary'> Crea Tweet </button>
                 </form>
 
             </div>
